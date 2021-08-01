@@ -87,6 +87,13 @@ def extract_name(spacy_text, matcher):
         return ""
 
 
+def extract_city(spacy_text):
+    for token in spacy_text.ents:
+        if token.label_ == "GPE":
+            return token
+            break
+
+
 def extract_experience(spacy_text):
     all_experience = []
     for sent in spacy_text.sents:

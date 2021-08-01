@@ -28,7 +28,7 @@ class Model:
 
     def get_dataframe(self):
         df_resume = pd.DataFrame({"resume_objects": self.resumes, "similarity": self.resume_job_sim})
-        df_resume = df_resume.sort_values("similarity",ascending=False)
+        df_resume = df_resume.sort_values("similarity", ascending=False)
         df_resume["rank"] = df_resume["similarity"].rank()
         df_resume = df_resume[:self.top_n]
         df_resume["name"] = df_resume.apply(lambda row: row.resume_objects.name, axis=1)
@@ -37,6 +37,7 @@ class Model:
         df_resume["name"] = df_resume.apply(lambda row: row.resume_objects.name, axis=1)
         df_resume["mobile"] = df_resume.apply(lambda row: row.resume_objects.mobile_number, axis=1)
         df_resume["email"] = df_resume.apply(lambda row: row.resume_objects.email, axis=1)
+        df_resume["city"] = df_resume.apply(lambda row: row.resume_objects.city.text, axis=1)
         # education experience and skills cleaned for final reporting
         df_resume["education"] = df_resume.apply(
             lambda row: set([exp for val in row.resume_objects.all_education for vals in val.values() for exp in vals]),

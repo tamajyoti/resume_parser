@@ -10,6 +10,7 @@ class Resume:
         self.email = extract_email(self.resume_text)
         self.spacy_text, self.matcher = covert_text_spacy(self.resume_text, resume_flag=True)
         self.name = extract_name(self.spacy_text, self.matcher)
+        self.city = extract_city(self.spacy_text)
         self.all_experience = extract_experience(self.spacy_text)
         self.all_education = extract_education(self.all_experience, EDUCATION)
         self.all_prof_orgs = extract_professional_experience(self.all_experience, EDUCATION)
