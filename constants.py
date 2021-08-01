@@ -1,0 +1,1 @@
+EDUCATION = ["university", "college", "school"]

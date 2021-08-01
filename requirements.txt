@@ -1,0 +1,15 @@
+pandas==1.1.5
+matplotlib==3.3.1
+numpy>=1.19.1
+scikit-learn==0.23.2
+scipy>=1.5.0
+seaborn
+imblearn
+jupyter
+xgboost
+jedi==0.17.2
+tika
+PyPDF2~=1.26.0
+spacy~=3.1.1
+sentence-transformers
+click~=7.1.2
