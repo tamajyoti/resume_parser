@@ -82,9 +82,26 @@ def extract_name(spacy_text, matcher):
         all_match.append(spacy_text[start:end].text)
 
     if all_match:
-        return all_match[0]
+        name_a = all_match[0]
     else:
-        return ""
+        name_a = None
+
+    spacy_name = []
+    for i, token in enumerate(spacy_text.ents):
+        if token.label_ == "PERSON":
+            name_b = token.text
+            spacy_name.append(name_b)
+            break
+        if i >= 4:
+            break
+
+    if len(spacy_name) > 0:
+        return spacy_name[0]
+    else:
+        if all_match:
+            return all_match[0]
+        else:
+            None
 
 
 def extract_city(spacy_text):
